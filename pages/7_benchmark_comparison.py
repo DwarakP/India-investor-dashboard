@@ -13,11 +13,11 @@ st.title("📉 Portfolio vs Nifty 500")
 # --------------------------------------------------
 
 portfolio = pd.read_excel(
-    "data/portfolio_history.xlsx"
+    "data/portfolio_history.csv"
 )
 
 benchmark = pd.read_excel(
-    "data/nifty500_history.xlsx"
+    "data/nifty500_history.csv"
 )
 
 portfolio["Date"] = pd.to_datetime(portfolio["Date"])
