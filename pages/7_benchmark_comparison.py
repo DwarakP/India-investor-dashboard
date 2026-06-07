@@ -129,6 +129,19 @@ row2_col2.metric(
 )
 
 st.divider()
+
+
+
+# Latest month values
+
+latest_portfolio_return = df["Portfolio_Return"].iloc[-1]
+
+latest_benchmark_return = df["Benchmark_Return"].iloc[-1]
+
+latest_alpha = (
+    latest_portfolio_return
+    - latest_benchmark_return
+)
 # --------------------------------------------------
 # Growth of 100
 # --------------------------------------------------
