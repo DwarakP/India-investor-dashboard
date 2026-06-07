@@ -1,1 +1,2 @@
-I am creating a dshboard of my investments
+I am creating a dashboard of my investments
+To view the alpha generated against the benchmark
