@@ -9,6 +9,7 @@ df = pd.read_csv(
     on_bad_lines="skip"
 )
 
+
 st.dataframe(df, use_container_width=True)
 
 st.write(f"Total Holdings: {len(df)}")
