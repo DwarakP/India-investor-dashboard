@@ -91,6 +91,12 @@ alpha = portfolio_return - benchmark_return
 
 winning_months = (df["Alpha"] > 0).sum()
 
+latest_row = df.iloc[-1]
+
+latest_portfolio_return = latest_row["Portfolio_Return"]
+latest_benchmark_return = latest_row["Benchmark_Return"]
+latest_alpha = latest_row["Alpha"]
+
 # --------------------------------------------------
 # KPI Row 1
 # --------------------------------------------------
@@ -116,20 +122,23 @@ row1_col3.metric(
 # KPI Row 2
 # --------------------------------------------------
 
-row2_col1, row2_col2 = st.columns(2)
+row2_col1, row2_col2, row2_col3 = st.columns(3)
 
 row2_col1.metric(
-    "Alpha Generated",
-    f"{alpha:.2f}%"
+    "Current Month Portfolio",
+    f"{latest_portfolio_return:.2f}%"
 )
 
 row2_col2.metric(
-    "Winning Months",
-    f"{winning_months}/{len(df)-1}"
+    "Current Month Nifty500",
+    f"{latest_benchmark_return:.2f}%"
 )
 
-st.divider()
-
+row2_col3.metric(
+    "Current Month Alpha",
+    f"{latest_alpha:.2f}%",
+    delta=f"{latest_alpha:.2f}%"
+)
 
 
 # Latest month values
