@@ -1,6 +1,27 @@
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+from utils import load_css
+
+load_css()
+
+st.title("📉 Portfolio vs Nifty 500")
+
 # --------------------------------------------------
-# KPIs
+# Load Data
 # --------------------------------------------------
+
+portfolio = pd.read_csv(
+    "data/portfolio_history.csv"
+)
+
+benchmark = pd.read_csv(
+    "data/nifty500_history.csv"
+)
+
+portfolio["Date"] = pd.to_datetime(portfolio["Date"])
+benchmark["Date"] = pd.to_datetime(benchmark["Date"])
 
 # --------------------------------------------------
 # Merge
@@ -14,53 +35,6 @@ df = pd.merge(
 )
 
 # --------------------------------------------------
-# KPIs
-# --------------------------------------------------
-
-current_portfolio_value = df["Portfolio_Value"].iloc[-1]
-
-portfolio_return = (
-    (
-        df["Portfolio_Value"].iloc[-1]
-        / df["Portfolio_Value"].iloc[0]
-    ) - 1
-) * 100
-
-alpha = portfolio_return - benchmark_return
-
-best_month = (
-    df.loc[
-        df["Portfolio_Return"].idxmax(),
-        "Date"
-    ].strftime("%b %Y")
-)
-
-c1, c2, c3, c4, c5 = st.columns(5)
-
-c1.metric(
-    "Portfolio Value",
-    f"₹{current_portfolio_value:,.0f}"
-)
-
-c2.metric(
-    "Portfolio Return",
-    f"{portfolio_return:.2f}%"
-)
-
-c3.metric(
-    "Nifty 500 Return",
-    f"{benchmark_return:.2f}%"
-)
-
-c4.metric(
-    "Alpha",
-    f"{alpha:.2f}%"
-)
-
-c5.metric(
-    "Best Month",
-    best_month
-)# --------------------------------------------------
 # Returns
 # --------------------------------------------------
 
