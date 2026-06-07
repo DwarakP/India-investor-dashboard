@@ -69,6 +69,8 @@ df["Benchmark_Growth"] = (
 # KPIs
 # --------------------------------------------------
 
+current_portfolio_value = df["Portfolio_Value"].iloc[-1]
+
 portfolio_return = (
     (
         df["Portfolio_Value"].iloc[-1]
@@ -92,35 +94,32 @@ best_month = (
     ].strftime("%b %Y")
 )
 
-worst_month = (
-    df.loc[
-        df["Portfolio_Return"].idxmin(),
-        "Date"
-    ].strftime("%b %Y")
-)
-
-c1, c2, c3, c4 = st.columns(4)
+c1, c2, c3, c4, c5 = st.columns(5)
 
 c1.metric(
+    "Portfolio Value",
+    f"₹{current_portfolio_value:,.0f}"
+)
+
+c2.metric(
     "Portfolio Return",
     f"{portfolio_return:.2f}%"
 )
 
-c2.metric(
+c3.metric(
     "Nifty 500 Return",
     f"{benchmark_return:.2f}%"
 )
 
-c3.metric(
+c4.metric(
     "Alpha",
     f"{alpha:.2f}%"
 )
 
-c4.metric(
+c5.metric(
     "Best Month",
     best_month
 )
-
 st.divider()
 
 # --------------------------------------------------
