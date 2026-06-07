@@ -5,7 +5,7 @@ import plotly.express as px
 st.title("📈 Performance Analysis")
 
 # Load portfolio
-df = pd.read_csv("data/Investments.csv")
+df = pd.read_csv("data/investments.csv")
 
 # Convert columns to numeric
 numeric_cols = [
