@@ -2,19 +2,27 @@
 # KPIs
 # --------------------------------------------------
 
+# --------------------------------------------------
+# Merge
+# --------------------------------------------------
+
+df = pd.merge(
+    portfolio,
+    benchmark,
+    on="Date",
+    how="inner"
+)
+
+# --------------------------------------------------
+# KPIs
+# --------------------------------------------------
+
 current_portfolio_value = df["Portfolio_Value"].iloc[-1]
 
 portfolio_return = (
     (
         df["Portfolio_Value"].iloc[-1]
         / df["Portfolio_Value"].iloc[0]
-    ) - 1
-) * 100
-
-benchmark_return = (
-    (
-        df["Nifty500"].iloc[-1]
-        / df["Nifty500"].iloc[0]
     ) - 1
 ) * 100
 
