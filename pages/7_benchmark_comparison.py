@@ -66,10 +66,12 @@ df["Benchmark_Growth"] = (
 ) * 100
 
 # --------------------------------------------------
-# KPIs
+# KPI Calculations
 # --------------------------------------------------
 
 current_portfolio_value = df["Portfolio_Value"].iloc[-1]
+
+portfolio_cr = current_portfolio_value / 10000000
 
 portfolio_return = (
     (
@@ -87,41 +89,46 @@ benchmark_return = (
 
 alpha = portfolio_return - benchmark_return
 
-best_month = (
-    df.loc[
-        df["Portfolio_Return"].idxmax(),
-        "Date"
-    ].strftime("%b %Y")
-)
+winning_months = (df["Alpha"] > 0).sum()
 
-c1, c2, c3, c4, c5 = st.columns(5)
+# --------------------------------------------------
+# KPI Row 1
+# --------------------------------------------------
 
-c1.metric(
+row1_col1, row1_col2, row1_col3 = st.columns(3)
+
+row1_col1.metric(
     "Portfolio Value",
-    f"₹{current_portfolio_value:,.0f}"
+    f"₹{portfolio_cr:.2f} Cr"
 )
 
-c2.metric(
+row1_col2.metric(
     "Portfolio Return",
     f"{portfolio_return:.2f}%"
 )
 
-c3.metric(
+row1_col3.metric(
     "Nifty 500 Return",
     f"{benchmark_return:.2f}%"
 )
 
-c4.metric(
-    "Alpha",
+# --------------------------------------------------
+# KPI Row 2
+# --------------------------------------------------
+
+row2_col1, row2_col2 = st.columns(2)
+
+row2_col1.metric(
+    "Alpha Generated",
     f"{alpha:.2f}%"
 )
 
-c5.metric(
-    "Best Month",
-    best_month
+row2_col2.metric(
+    "Winning Months",
+    f"{winning_months}/{len(df)-1}"
 )
-st.divider()
 
+st.divider()
 # --------------------------------------------------
 # Growth of 100
 # --------------------------------------------------
