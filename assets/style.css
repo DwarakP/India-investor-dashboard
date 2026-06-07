@@ -1,0 +1,77 @@
+/* General Layout */
+.main {
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* Dashboard Title */
+h1 {
+    color: #4CAF50;
+    font-weight: 700;
+}
+
+/* Section Headers */
+h2, h3 {
+    color: #E0E0E0;
+}
+
+/* Metric Cards */
+[data-testid="metric-container"] {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
+}
+
+/* DataFrame Styling */
+[data-testid="stDataFrame"] {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #111827;
+}
+
+/* Buttons */
+.stButton > button {
+    border-radius: 8px;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* Text Input */
+.stTextInput input {
+    border-radius: 8px;
+}
+
+/* Text Area */
+.stTextArea textarea {
+    border-radius: 8px;
+}
+
+/* Success Messages */
+.stSuccess {
+    border-radius: 10px;
+}
+
+/* Warning Messages */
+.stWarning {
+    border-radius: 10px;
+}
+
+/* Error Messages */
+.stError {
+    border-radius: 10px;
+}
+
+/* Portfolio Health Score */
+.portfolio-score {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #4CAF50;
+}
