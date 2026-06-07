@@ -12,11 +12,11 @@ st.title("📉 Portfolio vs Nifty 500")
 # Load Data
 # --------------------------------------------------
 
-portfolio = pd.read_excel(
+portfolio = pd.read_csv(
     "data/portfolio_history.csv"
 )
 
-benchmark = pd.read_excel(
+benchmark = pd.read_csv(
     "data/nifty500_history.csv"
 )
 
