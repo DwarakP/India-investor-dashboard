@@ -5,7 +5,7 @@ import plotly.express as px
 st.title("⚠️ Risk Dashboard")
 
 # Load data
-df = pd.read_csv("Investments.csv")
+df = pd.read_csv("data/Investments.csv")
 
 # Convert numeric columns
 numeric_cols = [
