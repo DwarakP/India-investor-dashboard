@@ -4,7 +4,7 @@ import plotly.express as px
 
 st.title("📈 Allocation")
 
-df = pd.read_csv("Investments.csv")
+df = pd.read_csv("data/Investments.csv")
 
 top = df.sort_values(
     "Current Value",
