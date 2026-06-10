@@ -13,7 +13,7 @@ def load_portfolio_data():
     etf_df["Asset Class"] = "ETF"
 
     portfolio_df = pd.concat(
-        [equity_df, mf_df, invit_df],
+        [equity_df, mf_df, invit_df, ETF],
         ignore_index=True
     )
 
